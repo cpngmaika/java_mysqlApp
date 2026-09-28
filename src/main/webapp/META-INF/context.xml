@@ -7,7 +7,7 @@
               driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/murach?useSSL=true&amp;serverTimezone=UTC"
               username="2TRRDwdrPF1DsiT.root"
-              password="<DIEN_MAT_KHAU_VUA_GENERATE_VAO_DAY>"
+              password="uQAFhYSSA5H6bCJt"
               maxTotal="100"
               maxIdle="30"
               maxWaitMillis="10000"
