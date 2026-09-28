@@ -13,14 +13,31 @@ public class MailUtil {
                                 String username, String password)
             throws MessagingException {
 
+        // Đọc cấu hình SMTP linh hoạt từ biến môi trường (phục vụ Deploy Render/Cloud)
+        String host = System.getenv("SMTP_HOST");
+        if (host == null || host.trim().isEmpty()) {
+            host = "smtp.gmail.com";
+        }
+
+        String port = System.getenv("SMTP_PORT");
+        if (port == null || port.trim().isEmpty()) {
+            port = "465";
+        }
+
         Properties props = new Properties();
         props.put("mail.transport.protocol", "smtp");
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "465");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", port);
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.ssl.enable", "true"); // Bật SSL (Bắt buộc khi deploy Server Cloud như Render)
-        props.put("mail.smtp.connectiontimeout", "5000"); // Timeout kết nối 5 giây
-        props.put("mail.smtp.timeout", "5000"); // Timeout đọc phản hồi 5 giây
+
+        if ("465".equals(port)) {
+            props.put("mail.smtp.ssl.enable", "true");
+        } else {
+            props.put("mail.smtp.starttls.enable", "true");
+        }
+
+        props.put("mail.smtp.connectiontimeout", "5000");
+        props.put("mail.smtp.timeout", "5000");
 
         Session session = Session.getInstance(props, new Authenticator() {
             @Override
