@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/jdbc-webapp">
+
+    <!-- Cấu hình DataSource MySQL mẫu (Thay thế username và password tương ứng với máy cá nhân) -->
+    <Resource name="jdbc/murach"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/murach?useSSL=false&amp;serverTimezone=UTC"
+              username="YOUR_DB_USER"
+              password="YOUR_DB_PASSWORD"
+              maxTotal="100"
+              maxIdle="30"
+              maxWaitMillis="10000"
+              logAbandoned="true"
+              removeAbandonedOnBorrow="true"
+              removeAbandonedTimeout="60" />
+
+</Context>
