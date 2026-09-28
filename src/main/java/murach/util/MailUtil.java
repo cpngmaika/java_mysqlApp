@@ -16,9 +16,11 @@ public class MailUtil {
         Properties props = new Properties();
         props.put("mail.transport.protocol", "smtp");
         props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.port", "465");
         props.put("mail.smtp.auth", "true");
-        props.put("mail.smtp.starttls.enable", "true"); // Bật TLS
+        props.put("mail.smtp.ssl.enable", "true"); // Bật SSL (Bắt buộc khi deploy Server Cloud như Render)
+        props.put("mail.smtp.connectiontimeout", "5000"); // Timeout kết nối 5 giây
+        props.put("mail.smtp.timeout", "5000"); // Timeout đọc phản hồi 5 giây
 
         Session session = Session.getInstance(props, new Authenticator() {
             @Override

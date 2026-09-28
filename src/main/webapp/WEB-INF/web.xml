@@ -11,14 +11,14 @@
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
 
-    <!-- Cấu hình Email & Password ứng dụng -->
+    <!-- Cấu hình Email & Password mặc định (Trên Render sẽ ưu tiên đọc từ Environment Variables) -->
     <context-param>
         <param-name>mailUsername</param-name>
-        <param-value>phongcutea5@gmail.com</param-value>
+        <param-value>YOUR_EMAIL@gmail.com</param-value>
     </context-param>
     <context-param>
         <param-name>mailPassword</param-name>
-        <param-value>ykoo lqnn mhgi bbwp</param-value>
+        <param-value>YOUR_APP_PASSWORD</param-value>
     </context-param>
 
     <error-page>
