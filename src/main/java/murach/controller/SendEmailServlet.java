@@ -23,8 +23,15 @@ public class SendEmailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String mailUsername = getServletContext().getInitParameter("mailUsername");
-        String mailPassword = getServletContext().getInitParameter("mailPassword");
+        String mailUsername = System.getenv("MAIL_USERNAME");
+        if (mailUsername == null || mailUsername.trim().isEmpty()) {
+            mailUsername = getServletContext().getInitParameter("mailUsername");
+        }
+
+        String mailPassword = System.getenv("MAIL_PASSWORD");
+        if (mailPassword == null || mailPassword.trim().isEmpty()) {
+            mailPassword = getServletContext().getInitParameter("mailPassword");
+        }
 
         String to = request.getParameter("to");
         String from = request.getParameter("from");
